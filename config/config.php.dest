@@ -1,0 +1,21 @@
+<?php
+
+$wwwdir = "";
+$sitedir = "";
+$sqlite_dir = "";
+$sqlite_database = "postfix.sqlite3";
+
+// The Below Options should be fine as defined.
+
+$CONFIGDIR = "$sitedir/config";
+
+$bin_site = "$sitedir/bin";
+$ccs_site = "$sitedir/ccs";
+$img_site = "$sitedir/images";
+
+$bin_dir = "$wwwdir/bin";
+$ccs_dir = "$wwwdir/ccs";
+$img_dir = "$wwwdir/images";
+
+?>
+
