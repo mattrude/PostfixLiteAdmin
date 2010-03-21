@@ -7,8 +7,8 @@ $sqlite_database = "postfix.sqlite3";
 
 // The Below Options should be fine as defined.
 
-$CONFIGDIR = "$sitedir/config";
-
+$color1 = "#ABB2B7";
+$color2 = "#C5D4E1";
 $bin_site = "$sitedir/bin";
 $ccs_site = "$sitedir/ccs";
 $img_site = "$sitedir/images";
