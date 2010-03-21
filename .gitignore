@@ -1,2 +1,2 @@
-postfix.sqlite
-config/config.php
+postfix.sqlite3
+config/config.inc.php
