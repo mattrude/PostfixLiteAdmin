@@ -5,6 +5,7 @@ include_once('./include/database.inc.php');
 
 echo "<h2>Domains</h2>";
 
+echo "<a href='./bin/add_domain.php'>Add Domain</a>";
 
 $row_count = "0";
 $line_count = "0";
@@ -19,7 +20,7 @@ while ($entry = $result->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td>$domain</td><td>$description</td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='./bin/view_domain.php?domain=$domain'>$domain</a></td><td>$description</td><td><a href='./bin/del_domain.php?domain=$domain'>del</a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
