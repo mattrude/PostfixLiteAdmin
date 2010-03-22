@@ -15,8 +15,10 @@ if (!empty($_POST['local_part'])) {
         $name = $_POST['name'];
         $quota = $_POST['quota'];
         $active = $_POST['active'];
-        $insQuery = "INSERT INTO mailbox VALUES ('$local_part@$domain', '$password', '$name', '$domain/$local_part@$domain/', '$local_part', '$domain', '$quota', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
-        $dbHandle->exec($insQuery);
+        $insmailQuery = "INSERT INTO mailbox VALUES ('$local_part@$domain', '$password', '$name', '$domain/$local_part@$domain/', '$local_part', '$domain', '$quota', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
+        $dbHandle->exec($insmailQuery);
+        $insAliasQuery = "INSERT INTO alias VALUES ('$local_part@$domain', '$local_part@$domain', '$domain', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
+        $dbHandle->exec($insAliasQuery);
         echo $insQuery;
         echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/bin/view_domain.php?domain=$domain'></head>";
 } ?>

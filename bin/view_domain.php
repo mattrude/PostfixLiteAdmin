@@ -58,5 +58,27 @@ while ($entry2 = $result2->fetch()) {
 }
 echo "</table></pre></td></tr></table>";
 
+// Aliases
+echo "<h3>Aliases in Domain</h3>";
+echo "<a href='add_alias.php?domain=$domain'>Add Alias</a><br />";
+echo "<table><tr><td><table border='0'>";
+echo "<tr><td></td><td>Email Address:</td><td>Deliver Mail To:</td><td>Domain:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
+$sqlShowAlias = "SELECT * FROM alias WHERE domain = '$domain';";
+$result5 = $dbHandle->query($sqlShowAlias);
+while ($entry5 = $result5->fetch()) {
+  $row_color = ($row_count % 2) ? $color1 : $color2;
+  $address = $entry5['address'];
+  $goto = $entry5['goto'];
+  $domain = $entry5['domain'];
+  $modified = $entry5['modified'];
+  $active = $entry5['active'];
+  if ($active == 'on') {$active='yes';} else {$active='no';}
+
+  $row_count++;
+  $line_count++;
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$domain</small></td><td><small>$modified<small></td><td>$active</td><td><a href='del_alias.php?address=$address&domain=$domain'>del</a></td></tr>";
+}
+echo "</table></pre></td></tr></table>";
+
 ?>
 
