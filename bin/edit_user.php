@@ -25,8 +25,8 @@ if (!empty($_POST['local_part'])) {
   $quota = $_POST['quota'];
   $active = $_POST['active'];
   $updQuery = "UPDATE mailbox SET username = '$local_part@$domain', password = '$password', name = '$name', local_part = '$local_part', domain = '$domain', quota = '$quota', modified = '$modified', modified = datetime('NOW', 'localtime'), active = '$active' WHERE username = '$user';";
-  echo $updQuery;
-  echo "<head><meta HTTP-EQUIV='REFRESH' content='5; url=view_domain.php?domain=".$domain."'></head>";
+  echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=view_domain.php?domain=".$domain."'></head>";
+  //echo $updQuery;
   $dbHandle->exec($updQuery);
 }
 
@@ -49,13 +49,21 @@ while ($entry = $result->fetch()) {
   echo "<tr><td>Editing User: </td><td><strong>$name</strong></td></tr>";
   echo "<tr><td>Name: </td><td><input type='text' value='".$name."' name='name' /></td></tr>";
   echo "<tr><td>User Name: </td><td><input type='text' value='".$local_part."' name='local_part' /></td></tr>";
-  echo "<tr><td>Domain: </td><td>$domain</td></tr>";
+  echo "<tr><td>Domain: </td><td><select name='domain'>";
+  $sqlAllDomains = "SELECT * FROM domain;";
+  $result3 = $dbHandle->query($sqlAllDomains);
+  while ($entry3 = $result3->fetch()) {
+    $alldomain = $entry3['domain'];
+    if ($domain == $alldomain) { $selected = 'selected'; } else { $selected = '';}
+    echo "<option value='".$alldomain."' $selected >".$alldomain."</option>";
+  }
+  echo "</select></td></tr>";
   echo "<tr><td>Email Address: </td><td>$username</td></tr>";
   echo "<tr><td>Password: </td><td><input type='text' value='".$password."' name='password' /></td></tr>";
   echo "<tr><td>Mail Directory: </td><td><small>$maildir</small></td></tr>";
   echo "<tr><td>Quota: </td><td><input type='text' size='5' value='".$quota."' name='quota' />MB</td></tr>";
   echo "<tr><td>User Active?: </td><td><input type='checkbox' $active name='active' /></td></tr>";
-  echo "<tr><td>Last Modified: </td><td>$modified</td></tr>";
+  echo "<tr><td>Last Updated: </td><td>$modified</td></tr>";
   echo "<tr><td>Created on: </td><td>$created</td></tr>";
   echo "</td></tr></table>";
   echo "<input type='submit' value='Update Domain' /></form>";

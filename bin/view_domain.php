@@ -32,7 +32,7 @@ echo "<tr><td>Max Number of Aliases: </td><td>$aliases</td><td>Max Number of Mai
 echo "<tr><td>Default User Quota: </td><td>$quota MB</td><td>Default Transport: </td><td>$transport</td></tr>";
 echo "<tr><td>Backup MX Domain: </td><td>$backupmx</td><td>Domain Active: </td><td>$active</td></tr>";
 echo "</td></tr></table>";
-echo "<a href='edit_domain.php?domain=$domain'>Edit Domain</a>";
+echo "<a href='edit_domain.php?domain=$domain'>Edit Domain</a> <a href='../'>Back to Domain List</a>";
 
 }
 
@@ -54,7 +54,7 @@ while ($entry2 = $result2->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td>$modified</td><td>$active</td><td><a href='del_user.php?username=$username&domain=$domain'>del</a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td>$active</td><td><a href='del_user.php?username=$username&domain=$domain'>del</a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
