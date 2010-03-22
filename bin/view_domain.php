@@ -54,7 +54,7 @@ while ($entry2 = $result2->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td>$maildir</td><td>$quota MB</td><td>$modified</td><td>$active</td><td><a href='del_user.php?username=$username&domain=$domain'>del</a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td>$modified</td><td>$active</td><td><a href='del_user.php?username=$username&domain=$domain'>del</a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
