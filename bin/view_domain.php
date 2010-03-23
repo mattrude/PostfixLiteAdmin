@@ -54,7 +54,7 @@ while ($entry2 = $result2->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td>$active</td><td><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td><center>$active</center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></center></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
@@ -76,7 +76,7 @@ while ($entry5 = $result5->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$domain</small></td><td><small>$modified<small></td><td>$active</td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$domain</small></td><td><small>$modified<small></td><td><center>$active</center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
