@@ -20,7 +20,7 @@ while ($entry = $result->fetch()) {
 
   $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='./bin/view_domain.php?domain=" .$domain. "'>$domain</a></td><td>$description</td><td><a href='./bin/del_domain.php?domain=$domain'>del</a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='./bin/view_domain.php?domain=" .$domain. "'>$domain</a></td><td>$description</td><td><a href='./bin/del_domain.php?domain=$domain'><img border=0 src='images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
