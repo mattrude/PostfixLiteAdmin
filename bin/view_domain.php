@@ -48,7 +48,7 @@ while ($entry2 = $result2->fetch()) {
   $quota = $entry2['quota'];
   $modified = $entry2['modified'];
   $active = $entry2['active'];
-  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
+  if ($active == 1) {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
 
   $line_count++;
   echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td><center><a href='activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'>$active</a></center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></center></td></tr>";
@@ -65,11 +65,12 @@ $result5 = $dbHandle->query($sqlShowAlias);
 while ($entry5 = $result5->fetch()) {
   $row_color = ($line_count2 % 2) ? $color1 : $color2;
   $address = $entry5['address'];
-  $goto = $entry5['goto'];
+  $goto_post = $entry5['goto'];
   $domain = $entry5['domain'];
   $modified = $entry5['modified'];
   $active = $entry5['active'];
-  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
+  $goto = str_replace(",", "<br />", $goto_post);
+  if ($active == 1) {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
 
   $line_count2++;
   echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'>$active</a></center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";

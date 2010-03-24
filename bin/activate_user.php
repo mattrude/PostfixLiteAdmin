@@ -22,10 +22,10 @@ if (!isset($_REQUEST['switch_active']))
 $switch_active = $_REQUEST['switch_active'];
 
 if ($switch_active == 'on') {
-  $updateQuery = "UPDATE mailbox SET active = 'on' WHERE username = '$address'";
+  $updateQuery = "UPDATE mailbox SET active = 1 WHERE username = '$address'";
   $dbHandle->exec($updateQuery);
 } elseif ($switch_active == 'off') {
-  $updateQuery = "UPDATE mailbox SET active = 'off' WHERE username = '$address'";
+  $updateQuery = "UPDATE mailbox SET active = 0 WHERE username = '$address'";
   $dbHandle->exec($updateQuery);
 } else {
 }

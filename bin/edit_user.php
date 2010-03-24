@@ -25,8 +25,9 @@ if (!empty($_POST['local_part'])) {
   $local_part = $_POST['local_part'];
   $modified = $_POST['modified'];
   $quota = $_POST['quota'];
-  $active = $_POST['active'];
-  $updQuery = "UPDATE mailbox SET username = '$local_part@$domain', password = '$password', name = '$name', local_part = '$local_part', domain = '$domain', quota = '$quota', modified = '$modified', modified = datetime('NOW', 'localtime'), active = '$active' WHERE username = '$user';";
+  $active_post = $_POST['active'];
+  if ($active_post == 'on') {$active=1;} else {$active=0;}
+  $updQuery = "UPDATE mailbox SET username = '$local_part@$domain', password = '$password', name = '$name', local_part = '$local_part', domain = '$domain', quota = '$quota', modified = '$modified', modified = datetime('NOW', 'localtime'), active = $active WHERE username = '$user';";
   echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=view_domain.php?domain=".$domain."'></head>";
   //echo $updQuery;
   $dbHandle->exec($updQuery);
@@ -55,7 +56,7 @@ $created = $entry['created'];
 $modified = $entry['modified'];
 $quota = $entry['quota'];
 $active = $entry['active'];
-if ($active == 'on') {$active='checked';} else {$active='';}
+if ($active == 1) {$active='checked';} else {$active='';}
 
 echo "<form action='?domain=".$domain."&user=".$user."' method='post'>";
 echo "<table><tr><td><table border='0'>";
@@ -90,13 +91,13 @@ $result5 = $dbHandle->query($sqlShowAlias);
 while ($entry5 = $result5->fetch()) {
   $row_color = ($row_count % 2) ? $color1 : $color2;
   $address = $entry5['address'];
-  $goto = $entry5['goto'];
+  $goto_post = $entry5['goto'];
   $modified = $entry5['modified'];
   $active = $entry5['active'];
-  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';}
+  if ($active == 1) {$active='<img border=0 alt="yes" src="../images/icon_check.png">';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';}
 
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$goto</a></td><td><small>$modified<small></td><td><center>$active</center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td><small>$modified<small></td><td><center>$active</center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 

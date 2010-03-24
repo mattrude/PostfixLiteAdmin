@@ -22,10 +22,10 @@ if (!isset($_REQUEST['switch_active']))
 $switch_active = $_REQUEST['switch_active'];
 
 if ($switch_active == 'on') {
-  $updateQuery = "UPDATE alias SET active = 'on' WHERE address = '$address'";
+  $updateQuery = "UPDATE alias SET active = 1 WHERE address = '$address'";
   $dbHandle->exec($updateQuery);
 } elseif ($switch_active == 'off') {
-  $updateQuery = "UPDATE alias SET active = 'off' WHERE address = '$address'";
+  $updateQuery = "UPDATE alias SET active = 0 WHERE address = '$address'";
   $dbHandle->exec($updateQuery);
 } else {
 }
