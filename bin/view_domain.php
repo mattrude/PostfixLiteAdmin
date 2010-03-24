@@ -13,7 +13,7 @@ echo "<h2>Options and Users in Domain $domain</h2>";
 
 $sqlShowBlocked = "SELECT * FROM domain WHERE domain = '$domain';";
 $result = $dbHandle->query($sqlShowBlocked);
-while ($entry = $result->fetch()) {
+$entry = $result->fetch();
   $description = $entry['description'];
   $aliases = $entry['aliases'];
   $mailboxes = $entry['mailboxes'];
@@ -32,51 +32,47 @@ echo "<tr><td>Max Number of Aliases: </td><td>$aliases</td><td>Max Number of Mai
 echo "<tr><td>Default User Quota: </td><td>$quota MB</td><td>Default Transport: </td><td>$transport</td></tr>";
 echo "<tr><td>Backup MX Domain: </td><td>$backupmx</td><td>Domain Active: </td><td>$active</td></tr>";
 echo "</td></tr></table>";
-echo "<a href='edit_domain.php?domain=$domain'>Edit Domain</a> <a href='../'>Back to Domain List</a>";
 
-}
-
+echo "<a href='edit_domain.php?domain=$domain'>Edit Domain</a> <a href='../'>Back to Domain List</a><br />";
+echo "<table><tr><td>";
 echo "<h3>Users in Domain</h3>";
 echo "<a href='add_user.php?domain=$domain'>Add User</a><br />";
-echo "<table><tr><td><table border='0'>";
-echo "<tr><td></td><td>Name:</td><td>Email Address:</td><td>Mail Directory:</td><td>Quota:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
+echo "<table border='0'><tr><td></td><td>Name:</td><td>Email Address:</td><td>Mail Directory:</td><td>Quota:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
 $sqlShowUsers = "SELECT * FROM mailbox WHERE domain = '$domain';";
 $result2 = $dbHandle->query($sqlShowUsers);
 while ($entry2 = $result2->fetch()) {
-  $row_color = ($row_count % 2) ? $color1 : $color2;
+  $row_color = ($line_count % 2) ? $color1 : $color2;
   $name = $entry2['name'];
   $username = $entry2['username'];
   $maildir = $entry2['maildir'];
   $quota = $entry2['quota'];
   $modified = $entry2['modified'];
   $active = $entry2['active'];
-  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';}
+  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
 
-  $row_count++;
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td><center>$active</center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></center></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota MB</td><td><small>$modified<small></td><td><center><a href='activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'>$active</a></center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></center></td></tr>";
 }
-echo "</table></pre></td></tr></table>";
+echo "</td></tr></table>";
 
 // Aliases
 echo "<h3>Aliases in Domain</h3>";
 echo "<a href='add_alias.php?domain=$domain'>Add Alias</a><br />";
-echo "<table><tr><td><table border='0'>";
-echo "<tr><td></td><td>Email Address:</td><td>Deliver Mail To:</td><td>Domain:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
+echo "<table border='0'>";
+echo "<tr><td></td><td>Email Address:</td><td>Deliver Mail To:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
 $sqlShowAlias = "SELECT * FROM alias WHERE domain = '$domain';";
 $result5 = $dbHandle->query($sqlShowAlias);
 while ($entry5 = $result5->fetch()) {
-  $row_color = ($row_count % 2) ? $color1 : $color2;
+  $row_color = ($line_count2 % 2) ? $color1 : $color2;
   $address = $entry5['address'];
   $goto = $entry5['goto'];
   $domain = $entry5['domain'];
   $modified = $entry5['modified'];
   $active = $entry5['active'];
-  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';}
+  if ($active == 'on') {$active='<img border=0 alt="yes" src="../images/icon_check.png">';$switch_active='off';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';$switch_active='on';}
 
-  $row_count++;
-  $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$domain</small></td><td><small>$modified<small></td><td><center>$active</center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  $line_count2++;
+  echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'>$active</a></center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
