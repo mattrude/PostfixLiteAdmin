@@ -1,7 +1,6 @@
 <?php
 
-include_once('./config.inc.php');
-include_once('./include/database.inc.php');
+include_once('functions.inc.php');
 
 echo "<h2>Domains</h2>";
 

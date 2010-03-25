@@ -1,7 +1,6 @@
 <?php
 
-include_once('../config.inc.php');
-include_once('../include/database.inc.php');
+include_once('../functions.inc.php');
 
 if (!isset($_REQUEST['address']))
         {
