@@ -76,5 +76,6 @@ while ($entry5 = $result5->fetch()) {
 }
 echo "</table></pre></td></tr></table>";
 
+include_once('functions.inc.php');
 ?>
 

@@ -23,4 +23,6 @@ while ($entry = $result->fetch()) {
 }
 echo "</table></pre></td></tr></table>";
 
+include_once('footer.php');
+
 ?>
