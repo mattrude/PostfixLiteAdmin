@@ -1,4 +1,4 @@
 <?php
-echo "Postfix Lite Admin";
+echo "<br />Postfix Lite Admin";
 
 ?>
