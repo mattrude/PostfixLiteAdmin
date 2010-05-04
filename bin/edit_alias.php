@@ -19,11 +19,11 @@ if (!empty($_POST['goto'])) {
   $goto = $_POST['goto'];
   $domain = $_POST['domain'];
   $modified = $_POST['modified'];
-  $active = $_POST['active'];
+  $active_post = $_POST['active'];
+  if ($active_post == 'on') {$active=1;} else {$active=0;}
   $updQuery = "UPDATE alias SET address = '$address_post', goto = '$goto', domain = '$domain', modified = datetime('NOW', 'localtime'), active = '$active' WHERE address = '$address_post';";
   $dbHandle->exec($updQuery);
-  echo "<head><meta HTTP-EQUIV='REFRESH' content='5; url=view_domain.php?domain=".$domain."'></head>";
-  echo $updQuery;
+  echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=view_domain.php?domain=".$domain."'></head>";
 }
 
 $sqlShowAlias = "SELECT * FROM alias WHERE address = '$address_post';";
@@ -35,7 +35,7 @@ $goto = $entry['goto'];
 $modified = $entry['modified'];
 $created = $entry['created'];
 $active = $entry['active'];
-if ($active == 'on') {$active='checked';} else {$active='';}
+if ($active == 1) {$active='checked';} else {$active='';}
 
 echo "<form action='?domain=".$domain."&address=".$address."' method='post'>";
 echo "<table><tr><td><table border='0'>";
