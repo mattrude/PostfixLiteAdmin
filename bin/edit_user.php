@@ -1,4 +1,5 @@
 <?php
+echo "<head><link rel='stylesheet' href='../style.css' type='text/css' media='screen' />";
 
 include_once('../functions.inc.php');
 
@@ -91,10 +92,10 @@ while ($entry5 = $result5->fetch()) {
   $goto_post = $entry5['goto'];
   $modified = $entry5['modified'];
   $active = $entry5['active'];
-  if ($active == 1) {$active='<img border=0 alt="yes" src="../images/icon_check.png">';} else {$active='<img border=0 alt="no" src="../images/icon_x.png">';}
+  if ($active == 1) {$active='check';$switch_active='off';} else {$active='del';}
 
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td><small>$modified<small></td><td><center>$active</center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td><small>$modified<small></td><td><center><div id=$active></div></center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 
