@@ -19,7 +19,7 @@ if (!empty($_POST['local_part'])) {
         $insAliasQuery = "INSERT INTO alias VALUES ('$local_part@$domain', '$local_part@$domain', '$domain', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         $dbHandle->exec($insAliasQuery);
         echo $insQuery;
-        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/bin/view_domain.php?domain=$domain'></head>";
+        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=$sitedir/bin/view_domain.php?domain=$domain'></head>";
 } ?>
 <form action="#" method="post">
 <table><tr><td><table border='0'>
