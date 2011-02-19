@@ -1,7 +1,4 @@
 <?php
-echo "<head><link rel='stylesheet' href='../style.css' type='text/css' media='screen' />";
-
-include_once('../functions.inc.php');
 
 if (!isset($_REQUEST['domain']))
         {
@@ -33,10 +30,10 @@ echo "<tr><td>Default User Quota: </td><td>$quota</td><td>Default Transport: </t
 echo "<tr><td>Backup MX Domain: </td><td>$backupmx</td><td>Domain Active: </td><td>$active</td></tr>";
 echo "</td></tr></table>";
 
-echo "<a href='edit_domain.php?domain=$domain'>Edit Domain</a> <a href='../'>Back to Domain List</a><br />";
+echo "<a href='index.php?page=edit_domain&domain=$domain'>Edit Domain</a> <a href='index.php'>Back to Domain List</a><br />";
 echo "<table><tr><td>";
 echo "<h3>Users in Domain</h3>";
-echo "<a href='add_user.php?domain=$domain'>Add User</a><br />";
+echo "<a href='index.php?page=create_user&domain=$domain'>Add User</a><br />";
 echo "<table border='0'><tr><td></td><td>Name:</td><td>Email Address:</td><td>Mail Directory:</td><td>Quota:</td><td>Modified Last:</td><td>Active:</td><td></td><td></tr>";
 $sqlShowUsers = "SELECT * FROM mailbox WHERE domain = '$domain';";
 $result2 = $dbHandle->query($sqlShowUsers);
@@ -51,7 +48,7 @@ while ($entry2 = $result2->fetch()) {
   if ($active == 1) {$active='check';$switch_active='off';} else {$active='del';$switch_active='on';}
 
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='edit_user.php?domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota</td><td><small>$modified<small></td><td><center><a href='activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'><div id=$active></div></a></center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='../images/icon_del.png'></a></center></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=edit_user&domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota</td><td><small>$modified<small></td><td><center><a href='activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'><div id=$active></div></a></center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='images/icon_del.png'></a></center></td></tr>";
 }
 echo "</td></tr></table>";
 
@@ -73,7 +70,7 @@ while ($entry5 = $result5->fetch()) {
   if ($active == 1) {$active='check';$switch_active='off';} else {$active='del';$switch_active='on';}
 
   $line_count2++;
-  echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'><div id=$active></div></a></center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='../images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='edit_alias.php?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'><div id=$active></div></a></center></td><td><a href='del_alias.php?address=$address&domain=$domain'><img border=0 src='images/icon_del.png'></a></td></tr>";
 }
 echo "</table></pre></td></tr></table>";
 

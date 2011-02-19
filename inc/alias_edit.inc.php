@@ -1,7 +1,5 @@
 <?php
 
-include_once('../functions.inc.php');
-
 if (!isset($_REQUEST['domain']))
   {
     $_REQUEST['domain'] = 'dead';
@@ -14,16 +12,22 @@ if (!isset($_REQUEST['address']))
   }
 $address_post = $_REQUEST['address'];
 
+if (!isset($_REQUEST['user']))
+  {
+    $_REQUEST['user'] = 'dead';
+  }
+$user = $_REQUEST['user'];
+
 if (!empty($_POST['goto'])) {
-  $address = $_POST['address'];
+  $address = $address_post;
   $goto = $_POST['goto'];
-  $domain = $_POST['domain'];
+  $domain = $domain;
   $modified = $_POST['modified'];
   $active_post = $_POST['active'];
   if ($active_post == 'on') {$active=1;} else {$active=0;}
   $updQuery = "UPDATE alias SET address = '$address_post', goto = '$goto', domain = '$domain', modified = datetime('NOW', 'localtime'), active = '$active' WHERE address = '$address_post';";
   $dbHandle->exec($updQuery);
-  echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=view_domain.php?domain=".$domain."'></head>";
+  echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=index.php?page=edit_user&domain=".$domain."&user=".$user."'></head>";
 }
 
 $sqlShowAlias = "SELECT * FROM alias WHERE address = '$address_post';";
@@ -37,7 +41,7 @@ $created = $entry['created'];
 $active = $entry['active'];
 if ($active == 1) {$active='checked';} else {$active='';}
 
-echo "<form action='?domain=".$domain."&address=".$address."' method='post'>";
+echo "<form action='index.php?page=edit_alias&domain=".$domain."&address=".$address."&user=".$user."' method='post'>";
 echo "<table><tr><td><table border='0'>";
 echo "<tr><td>Email Address: </td><td><strong>$address</strong></td></tr>";
 echo "<tr><td>GO TO: </td><td><select name='goto'>";

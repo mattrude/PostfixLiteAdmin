@@ -1,7 +1,5 @@
 <?php
 
-include_once('../functions.inc.php');
-
 if (!isset($_REQUEST['domain']))
         {
          $_REQUEST['domain'] = 'dead';
@@ -14,14 +12,15 @@ if (!empty($_POST['local_part'])) {
         $name = $_POST['name'];
         $quota = $_POST['quota'];
         $active = $_POST['active'];
-        $insmailQuery = "INSERT INTO mailbox VALUES ('$local_part@$domain', '$password', '$name', '$domain/$local_part@$domain/', '$local_part', '$domain', '$quota', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
+        $insmailQuery = "INSERT INTO mailbox (username, password, name, maildir, local_part, domain, quota, created, modified, active) VALUES ('$local_part@$domain', '$password', '$name', '$domain/$local_part@$domain/', '$local_part', '$domain', '$quota', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         $dbHandle->exec($insmailQuery);
         $insAliasQuery = "INSERT INTO alias VALUES ('$local_part@$domain', '$local_part@$domain', '$domain', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         $dbHandle->exec($insAliasQuery);
         echo $insQuery;
-        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=$sitedir/bin/view_domain.php?domain=$domain'></head>";
-} ?>
-<form action="#" method="post">
+        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url='index.php?page=domain&domain=$domain'></head>";
+}
+echo "<form action='index.php?page=create_user&domain=$domain' method='post'>";
+?>
 <table><tr><td><table border='0'>
 <tr><td>Username: </td><td><input type="text" name="local_part" />@<td><select name='domain'>";
   <?php $sqlAllDomains = "SELECT * FROM domain;";
