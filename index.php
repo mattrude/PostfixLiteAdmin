@@ -18,6 +18,8 @@ if (!empty($_GET)) {
     require_once('inc/alias_edit.inc.php');
   } elseif ($_GET['page'] == 'del_alias') {
     require_once('inc/alias_del.inc.php');
+  } elseif ($_GET['page'] == 'add_alias') {
+    require_once('inc/alias_add.inc.php');
   }
 } else {
   echo "<h2>Domains</h2>";

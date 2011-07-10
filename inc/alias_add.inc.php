@@ -18,6 +18,7 @@ if (!empty($_POST['goto'])) {
         //echo $insQuery;
         echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/bin/view_domain.php?domain=$domain'></head>";
 } ?>
+
 <form action="#" method="post">
 <table><tr><td><table border='0'>
 <tr><td>Alias Email Address: </td><td><input type="text" name="address" />@<td><select name='domain'>;

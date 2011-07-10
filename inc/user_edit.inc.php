@@ -66,7 +66,7 @@ echo "</td></tr></table>";
 echo "<input type='submit' value='Update User' /></form>";
 
 echo "<h3>Aliases for $name</h3>";
-echo "<a href='add_alias.php?domain=$domain'>Add Alias</a><br />";
+echo "<a href='index.php?page=add_alias&domain=$domain'>Add Alias</a><br />";
 echo "<table border='0'>";
 echo "<tr><td></td><td>Deliver Mail Sent To</td><td>Modified Last</td><td>Active</td><td></td><td></tr>";
 $sqlShowAlias = "SELECT * FROM alias WHERE goto = '$username';";
