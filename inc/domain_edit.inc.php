@@ -17,6 +17,8 @@ if (!empty($_POST['domain'])) {
         $transport = $_POST['transport'];
         $backupmx = $_POST['backupmx'];
         $active = $_POST['active'];
+	if ($backupmx == 'on') {$backupmx='1';} else {$backupmx='0';}
+	if ($active == 'on') {$active='1';} else {$active='0';}
         $updQuery = "UPDATE domain SET domain = '$domain', description = '$description', aliases = '$aliases', mailboxes = '$mailboxes', maxquota = '$maxquota', quota = '$quota', transport = '$transport', backupmx = '$backupmx', modified = datetime('NOW', 'localtime'), active = '$active' WHERE domain= '$domain';";
         $dbHandle->exec($updQuery);
         echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=index.php?page=domain&domain=".$domain."'></head>";
