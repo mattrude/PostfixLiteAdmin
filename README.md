@@ -2,12 +2,12 @@ PostfixLiteAdmin is a small project built to allow an administrator to manage a 
 
 Currently PostfixLiteAdmin is an alpha state and is not recommended for production use.
 
-REQUIREMENTS
+== Requirements
  * Postfix (2.0+) with SQLite compiled in (http://postfix.org/)
  * SQLite version 3+ (http://sqlite.org/)
  * PHP version 5+ (http://php.net/)
  * IMAP server with SQLite support (optional)
 
-LICENSE
+== License
 PostfixLiteAdmin is free software; you may redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation (http://www.fsf.org/).
 
