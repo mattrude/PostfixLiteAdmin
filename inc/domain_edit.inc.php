@@ -38,8 +38,8 @@ while ($entry = $result->fetch()) {
   $virtual = '';
   $relay = '';
   $local = '';
-  if ($backupmx == 'on') {$backupmx='checked';} else {$backupmx='';}
-  if ($active == 'on') {$active='checked';} else {$active='';}
+  if ($backupmx == '1') {$backupmx='checked';} else {$backupmx='0';}
+  if ($active == '1') {$active='checked';} else {$active='0';}
   if ($transport == 'virtual') {$virtual='selected';} else if ($transport == 'local') {$local='selected';} else if ($transport == 'relay') {$relay = 'selected';}
 
   echo "<form action='index.php?page=edit_domain&domain=".$domain."' method='post'>";

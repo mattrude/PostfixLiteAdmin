@@ -20,8 +20,8 @@ $quota = ByteSize($entry['quota']);
 $transport = $entry['transport'];
 $backupmx = $entry['backupmx'];
 $active = $entry['active'];
-if ($backupmx == 'on') {$backupmx='yes';} else {$backupmx='no';}
-if ($active == 'on') {$active='yes';} else {$active='no';}
+if ($backupmx == '1') {$backupmx='Yes';} else {$backupmx='No';}
+if ($active == '1') {$active='Yes';} else {$active='No';}
 
 echo "<strong>Domain Name: </strong>$domain<br />";
 echo "<strong>Domain Description: </strong>$description";
