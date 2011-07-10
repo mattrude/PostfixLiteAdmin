@@ -1,5 +1,8 @@
 <?php
-echo "<head><link rel='stylesheet' href='style.css' type='text/css' media='screen' />";
+echo "<head><link rel='stylesheet' href='style.css' type='text/css' media='screen' />
+<body> 
+<div id='content'> 
+	<div id='primary' class='main'>";
 include_once('functions.inc.php');
 
 if (!empty($_GET)) {
