@@ -8,6 +8,8 @@ include_once('functions.inc.php');
 if (!empty($_GET)) {
   if ($_GET['page'] == 'create_user') {
     require_once('inc/user_create.inc.php');
+  } elseif ($_GET['page'] == 'del_user') {
+    require_once('inc/del_user.inc.php');
   } elseif ($_GET['page'] == 'domain') {
     require_once('inc/domain.inc.php');
   } elseif ($_GET['page'] == 'edit_domain') {

@@ -18,6 +18,6 @@ $delQuery = "DELETE FROM mailbox WHERE username = '$username'";
 $dbHandle->exec($delQuery);
 
 echo "<h2>Deleted $username</h2>";
-echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=view_domain.php?domain=".$domain."'></head>";
+echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=index.php?page=domain&domain=".$domain."'></head>";
 
 ?>

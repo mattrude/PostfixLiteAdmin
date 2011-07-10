@@ -52,7 +52,7 @@ while ($entry2 = $result2->fetch()) {
   if ($active == 1) {$active='check';$switch_active='off';} else {$active='del';$switch_active='on';}
 
   $line_count++;
-  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=edit_user&domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota</td><td><small>$modified<small></td><td><center><a href='bin/activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'><div id=$active></div></a></center></td><td><center><a href='del_user.php?username=$username&domain=$domain'><img border=0 src='images/icon_del.png'></a></center></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=edit_user&domain=" .$domain. "&user=" .$username. "'>$name</a></td><td>$username</td><td><small>$maildir</small></td><td>$quota</td><td><small>$modified<small></td><td><center><a href='bin/activate_user.php?switch_active=$switch_active&address=$username&domain=$domain'><div id=$active></div></a></center></td><td><center><a href='index.php?page=del_user&username=$username&domain=$domain'><img border=0 src='images/icon_del.png'></a></center></td></tr>";
 }
 echo "</td></tr></table>";
 
