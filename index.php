@@ -37,10 +37,13 @@ if (!empty($_GET)) {
     $row_color = ($row_count % 2) ? $color1 : $color2;
     $domain = $entry['domain'];
     $description = $entry['description'];
+    $active = $entry['active'];
+    if ($active == 1) {$active='check';$switch_active='off';} else {$active='del';$switch_active='on';}
+
   
     $row_count++;
     $line_count++;
-    echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=domain&domain=" .$domain. "'>$domain</a></td><td>$description</td><td><a href='./bin/del_domain.php?domain=$domain'><div id='del'></div></a></td></tr>";
+    echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=domain&domain=" .$domain. "'>$domain</a></td><td>$description</td><td><center><div id=$active></div></center></td><td><a href='./bin/del_domain.php?domain=$domain'><div id='del'></div></a></td></tr>";
   }
   echo "</table></pre></td></tr></table>";
 }
