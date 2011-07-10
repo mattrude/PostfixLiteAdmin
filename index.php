@@ -37,6 +37,6 @@ if (!empty($_GET)) {
   }
   echo "</table></pre></td></tr></table>";
 }
-include_once('footer.php');
+include_once('inc/footer.inc.php');
 
 ?>
