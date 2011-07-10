@@ -12,6 +12,7 @@ if (!empty($_POST['local_part'])) {
         $name = $_POST['name'];
         $quota = $_POST['quota'];
         $active = $_POST['active'];
+	if ($active == 'on') {$active='1';} else {$active='0';}
         $insmailQuery = "INSERT INTO mailbox (username, password, name, maildir, local_part, domain, quota, created, modified, active) VALUES ('$local_part@$domain', '$password', '$name', '$domain/$local_part@$domain/', '$local_part', '$domain', '$quota', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         $dbHandle->exec($insmailQuery);
         $insAliasQuery = "INSERT INTO alias VALUES ('$local_part@$domain', '$local_part@$domain', '$domain', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
@@ -34,7 +35,7 @@ echo "<form action='index.php?page=create_user&domain=$domain' method='post'>";
 <tr><td>Password: </td><td><input type="text" name="password" /></td></tr>
 <tr><td>Full Name: </td><td><input type="text" name="name" /></td></tr>
 <tr><td>Quota: </td><td><input type="text" size="5" value="1024" name="quota" />MB</td></tr>
-<tr><td>Active: </td><td><input type="checkbox" checked name="active" />MB</td></tr>
+<tr><td>Active: </td><td><input type="checkbox" checked name="active" /></td></tr>
 </td></tr></table>
 <input type="submit" value="Create User" /></form>
 <?php
