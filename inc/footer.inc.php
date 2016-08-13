@@ -1,14 +1,10 @@
-<?php
-echo "<br /></div>
-	<div id='footer'> 
-	    <div class='footer-left'> 
-		<p>Postfix Lite Admin | <a href='http://github.com/mattrude/PostfixLiteAdmin'>Source</a></p> 
+<br />
+        <footer class="footer">
+	    <div class='pull-right'> 
+		<p>Copyright &copy; 2009 &mdash; "2016" by <a href='http://mattrude.com'>Matt Rude</a></p> 
 	    </div> 
-	    <div class='footer-right'> 
-		<p>Copyright &copy; 2009 &mdash; ".date('Y')." by <a href='http://mattrude.com'>Matt Rude</a></p> 
-	    </div> 
-	</div>
+		<p>PostfixLiteAdmin | <a href='http://github.com/mattrude/PostfixLiteAdmin'>Source</a></p> 
+	</footer>
 </div>
-</html>";
-
-?>
+</div>
+</html>

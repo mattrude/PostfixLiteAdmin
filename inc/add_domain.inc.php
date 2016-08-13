@@ -1,7 +1,5 @@
 <?php
 
-include_once('../functions.inc.php');
-
 if (!empty($_POST['domain'])) {
         // generate INSERT query
         $domain = $_POST['domain'];
@@ -13,7 +11,7 @@ if (!empty($_POST['domain'])) {
         $transport = $_POST['transport'];
         $backupmx = $_POST['backupmx'];
         $active = $_POST['active'];
-        $insQuery = "INSERT INTO domain VALUES ('$domain', '$description', '$aliases', '$mailboxes', '$maxquota', '$quota', '$transport', '$backupmx', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
+        $insQuery = "INSERT INTO domain ( domain, description, aliases, mailboxes, maxquota, quota, transport, backupmx, created, modified active ) VALUES ('$domain', '$description', '$aliases', '$mailboxes', '$maxquota', '$quota', '$transport', '$backupmx', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         // execute query
         $dbHandle->exec($insQuery);
         echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin'></head>";

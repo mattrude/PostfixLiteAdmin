@@ -16,7 +16,7 @@ if (!empty($_POST['goto'])) {
         $insQuery = "INSERT INTO alias VALUES ('$address@$domain', '$goto', '$domain', datetime('NOW', 'localtime'), datetime('NOW', 'localtime'), '$active')";
         $dbHandle->exec($insQuery);
         //echo $insQuery;
-        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/bin/view_domain.php?domain=$domain'></head>";
+        echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/index.php?page=domain&domain=$domain'></head>";
 } ?>
 
 <form action="#" method="post">
@@ -41,7 +41,7 @@ if (!empty($_POST['goto'])) {
 
 <tr><td>Active: </td><td><input type="checkbox" checked name="active" /></td></tr>
 </td></tr></table>
-<input type="submit" value="Create User" /></form>
+<input type="submit" value="Create Alias" /></form>
 <?php
 
 
