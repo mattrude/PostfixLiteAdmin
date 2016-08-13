@@ -29,6 +29,4 @@ if ($switch_active == 'on') {
 } else {
 }
 
-echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=".$sitedir."index.php?page=domain&domain=".$domain."'></head>";
-
-?>
+echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin/index.php?page=domain&domain=".$domain."'></head>"; ?>

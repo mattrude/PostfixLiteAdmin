@@ -87,7 +87,7 @@ while ($entry5 = $result5->fetch()) {
   if ($active == 1) {$active='glyphicon-ok';$active_color='green';$switch_active='off';} else {$active='glyphicon-remove';$active_color='red';$switch_active='on';}
 
   $line_count2++;
-  echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='index.php?page=edit_alias&?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'><div style='color:$active_color;' class='glyphicon $active'></div></a></center></td><td><a href='index.php?page=del_alias&address=$address&domain=$domain'><img border=0 src='images/icon_del.png'></a></td></tr>";
+  echo "<tr bgcolor='$row_color'><td>$line_count2</td><td><a href='index.php?page=edit_alias&?domain=" .$domain. "&address=" .$address. "'>$address</a></td><td>$goto</td><td><small>$modified<small></td><td><center><a href='bin/activate_alias.php?switch_active=$switch_active&address=$address&domain=$domain'><div style='color:$active_color;' class='glyphicon $active'></div></a></center></td><td><a href='index.php?page=del_alias&address=$address&domain=$domain'><img border=0 src='images/icon_del.png'></a></td></tr>";
 }
 echo "</table>";
 
