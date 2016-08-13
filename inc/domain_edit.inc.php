@@ -43,15 +43,14 @@ while ($entry = $result->fetch()) {
   if ($backupmx == '1') {$backupmx='checked';} else {$backupmx='0';}
   if ($active == '1') {$active='checked';} else {$active='0';}
   if ($transport == 'virtual') {$virtual='selected';} else if ($transport == 'local') {$local='selected';} else if ($transport == 'relay') {$relay = 'selected';}
-
   echo "<form action='index.php?page=edit_domain&domain=".$domain."' method='post'>";
-  echo "<table><tr><td><table border='0'>";
+  echo "<div class='col-sm-10'><table class='table'>";
   echo "<tr><td>Domain Name: </td><td><strong>".$domain."</strong></td></tr>";
   echo "<tr><td>Domain Description: </td><td><input type='text' value='".$description."' name='description' /></td></tr>";
   echo "<tr><td>Max Number of Aliases: </td><td><input type='text' size='3' value='".$aliases."' name='aliases' /></td></tr>";
   echo "<tr><td>Max Number of Mailboxs: </td><td><input type='text' size='3' value='".$mailboxes."' name='mailboxes' /></td></tr>";
-  echo "<tr><td>Max Quota per Mailbox: </td><td><input type='text' size='5' value='".$maxquota."' name='maxquota' />MB</td></tr>";
-  echo "<tr><td>Default Mailbox Quota: </td><td><input type='text' size='5' value='".$quota."' name='quota' />MB</td></tr>";
+  echo "<tr><td>Max Quota per Mailbox: </td><td><input type='text' size='5' value='".$maxquota."' name='maxquota' /> MB</td></tr>";
+  echo "<tr><td>Default Mailbox Quota: </td><td><input type='text' size='5' value='".$quota."' name='quota' /> MB</td></tr>";
   echo "<tr><td>Transport Type: </td><td>
     <select name='transport'>
       <option value='virtual' ".$virtual." >Virtual</option>
@@ -62,9 +61,10 @@ while ($entry = $result->fetch()) {
   echo "<tr><td>Is Domain Active?: </td><td><input type='checkbox' $active name='active' /></td></tr>";
   echo "<tr><td>Date Last Updated: </td><td>$modified</td></tr>";
   echo "<tr><td>Date Created: </td><td>$created</td></tr>";
-  echo "</td></tr></table>";
+  echo "</table>";
   echo "<input type='hidden' value='".$domain."' name='domain' />";
-  echo "<input type='submit' value='Update Domain' /></form>";
+  echo "<input type='submit' value='Update Domain' /></div></form>";
+  echo "<div class='col-sm-offset-10'>This is a side bar.</div>";
 }
 
 ?>

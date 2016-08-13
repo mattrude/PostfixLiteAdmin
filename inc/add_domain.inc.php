@@ -17,15 +17,27 @@ if (!empty($_POST['domain'])) {
         echo "<head><meta HTTP-EQUIV='REFRESH' content='0; url=/PostfixLiteAdmin'></head>";
 } ?>
 <form action="#" method="post">
-<table><tr><td><table border='0'>
-<tr><td>Domain Name: </td><td><input type="text" name="domain" /></td></tr>
-<tr><td>Domain Description: </td><td><input type="text" name="description" /></td></tr>
-<tr><td>Max Number of Aliases: </td><td><input type="text" size="3" value="25" name="aliases" /></td></tr>
-<tr><td>Max Number of Mailboxs: </td><td><input type="text" size="3" value="25" name="mailboxes" /></td></tr>
-<tr><td>Max Quota per Mailbox: </td><td><input type="text" size="3" value="2048" name="maxquota" /></td></tr>
-<tr><td>Default Mailbox Quota: </td><td><input type="text" size="5" value="1024" name="quota" /></td></tr>
-<tr><td>Transport Type: </td><td><input type="text" value="virtual" name="transport" /></td></tr>
-<tr><td>Backup MX Server for Domain?: </td><td><input type="checkbox" name="backupmx" /></td></tr>
-<tr><td>Is Domain Active?: </td><td><input type="checkbox" checked name="active" /></td></tr>
-</td></tr></table>
-<input type="submit" value="Create Domain" /></form>
+  <div class="col-sm-5">
+    <p>Domain Name:</p>
+    <p>Domain Description:</p>
+    <p>Max Number of Aliases:</p>
+    <p>Max Number of Mailboxs:</p>
+    <p>Max Quota per Mailbox:</p>
+    <p>Default Mailbox Quota:</p>
+    <p>Transport Type:</p>
+    <p>Backup MX Server for Domain?:</p>
+    <p>Is Domain Active?:</p>
+  </div>
+  <div class="col-sm-offset-5">
+    <p><input type="text" name="domain" /></p>
+    <p><input type="text" name="description" /></p>
+    <p><input type="text" size="3" value="25" name="aliases" /></p>
+    <p><input type="text" size="3" value="25" name="mailboxes" /></p>
+    <p><input type="text" size="3" value="2048" name="maxquota" /></p>
+    <p><input type="text" size="5" value="1024" name="quota" /></p>
+    <p><input type="text" value="virtual" name="transport" /></p>
+    <p><input type="checkbox" name="backupmx" /></p>
+    <p><input type="checkbox" checked name="active" /></p>
+  </div>
+  <input class="btn btn-primary col-sm-offset-6" type="submit" value="Create Domain" />
+</form>

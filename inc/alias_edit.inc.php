@@ -40,11 +40,12 @@ $modified = $entry['modified'];
 $created = $entry['created'];
 $active = $entry['active'];
 if ($active == 1) {$active='checked';} else {$active='';}
-
-echo "<form action='index.php?page=edit_alias&domain=".$domain."&address=".$address."&user=".$user."' method='post'>";
-echo "<table><tr><td><table border='0'>";
-echo "<tr><td>Email Address: </td><td><strong>$address</strong></td></tr>";
-echo "<tr><td>GO TO: </td><td><select name='goto'>";
+?>
+<form action='index.php?page=edit_alias&domain=".$domain."&address=".$address."&user=".$user."' method='post'>
+<table border='0'>
+<tr><td>Email Address: </td><td><strong>$address</strong></td></tr>
+<tr><td>GO TO: </td><td><select name='goto'>
+<?php
 $sqlAllAddress = "SELECT * FROM mailbox WHERE domain = '$domain';";
 $result4 = $dbHandle->query($sqlAllAddress);
 while ($entry4 = $result4->fetch()) {
@@ -66,7 +67,6 @@ echo "</select></td></tr>";
 echo "<tr><td>Alias Active?: </td><td><input type='checkbox' $active name='active' /></td></tr>";
 echo "<tr><td>Last Updated: </td><td>$modified</td></tr>";
 echo "<tr><td>Created on: </td><td>$created</td></tr>";
-echo "</td></tr></table>";
 echo "<input type='submit' value='Update Alias' /></form>";
 
 ?>

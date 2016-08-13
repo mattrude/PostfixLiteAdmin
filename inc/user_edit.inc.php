@@ -42,7 +42,7 @@ $active = $entry['active'];
 if ($active == 1) {$active='checked';} else {$active='';}
 
 echo "<form action='index.php?page=edit_user&domain=".$domain."&user=".$user."' method='post'>";
-echo "<table><tr><td><table border='0'>";
+echo "<table border='0'>";
 echo "<tr><td>Editing User: </td><td><strong>$name</strong></td></tr>";
 echo "<tr><td>Name: </td><td><input type='text' value='".$name."' name='name' /></td></tr>";
 echo "<tr><td>User Name: </td><td><input type='text' value='".$local_part."' name='local_part' /></td></tr>";
@@ -67,7 +67,7 @@ echo "<input type='submit' value='Update User' /></form>";
 
 echo "<h3>Aliases for $name</h3>";
 echo "<a href='index.php?page=add_alias&domain=$domain'>Add Alias</a><br />";
-echo "<table border='0'>";
+echo "<table class='table table-striped'>";
 echo "<tr><td></td><td>Deliver Mail Sent To</td><td>Modified Last</td><td>Active</td><td></td><td></tr>";
 $sqlShowAlias = "SELECT * FROM alias WHERE goto = '$username';";
 $result5 = $dbHandle->query($sqlShowAlias);
@@ -84,6 +84,6 @@ while ($entry5 = $result5->fetch()) {
   $line_count++;
   echo "<tr bgcolor='$row_color'><td>$line_count</td><td><a href='index.php?page=edit_alias&domain=" .$domain. "&address=" .$address. "&user=" .$user. "'>$address</a></td><td><small>$modified<small></td><td><center><div id=$active></div></center></td><td><a href='ndex.php?page=del_alias&address=$address&domain=$domain'><img border=0 src='images/icon_del.png'></a></td></tr>";
 }
-echo "</table></pre></td></tr></table>";
+echo "</table></pre>";
 
 ?>
